@@ -287,3 +287,21 @@ small.error {
     color: #dc2626;
     font-size: .8rem;
 }
+
+.note-actions {
+    margin-top: .35rem;
+    text-align: right;
+}
+
+.btn-delete-note {
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: .78rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.btn-delete-note:hover {
+    color: #dc2626;
+}

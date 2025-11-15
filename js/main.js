@@ -82,6 +82,7 @@ clearBtn.addEventListener("click", () => {
 
 // --- Simple in-page "DB" of notes ---
 const notes = [];
+let nextId = 1;
 
 function renderNotes() {
     notesEl.innerHTML = "";
@@ -100,11 +101,14 @@ function renderNotes() {
 
             const meta = document.createElement("div");
             meta.className = "note-meta";
+
             const time = document.createElement("span");
             time.textContent = new Date(note.createdAt).toLocaleString();
+
             const tag = document.createElement("span");
             tag.className = "tag";
             tag.textContent = "Voice note";
+
             meta.appendChild(time);
             meta.appendChild(tag);
 
@@ -112,8 +116,28 @@ function renderNotes() {
             text.className = "note-text";
             text.textContent = note.text;
 
+            // --- delete button ---
+            const actions = document.createElement("div");
+            actions.className = "note-actions";
+
+            const deleteBtn = document.createElement("button");
+            deleteBtn.type = "button";
+            deleteBtn.className = "btn-delete-note";
+            deleteBtn.textContent = "Delete";
+
+            deleteBtn.addEventListener("click", () => {
+                const index = notes.findIndex(n => n.id === note.id);
+                if (index !== -1) {
+                    notes.splice(index, 1);
+                    renderNotes();
+                }
+            });
+
+            actions.appendChild(deleteBtn);
+
             card.appendChild(meta);
             card.appendChild(text);
+            card.appendChild(actions);
             notesEl.appendChild(card);
         });
 }
@@ -125,7 +149,7 @@ saveBtn.addEventListener("click", () => {
         errorMsg.textContent = "There is nothing to save yet. Record or type a note first.";
         return;
     }
-    notes.push({ text, createdAt: Date.now() });
+    notes.push({ id: nextId++, text, createdAt: Date.now() });
     textArea.value = "";
     errorMsg.style.display = "none";
     renderNotes();
