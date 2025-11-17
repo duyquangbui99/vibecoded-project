@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>WhisperNotes – Capture Your Thoughts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles/main.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">
+                <div class="brand-icon">🎙️</div>
+                <span>WhisperNotes</span>
+            </div>
+            <a href="index.html" class="back-link">← Back to landing</a>
+        </header>
+
+        <main>
+            <h1>Capture your thoughts with your voice</h1>
+            <p class="subtitle">
+                Tap the microphone, start speaking, and WhisperNotes will turn your words into text you can edit and
+                save.
+            </p>
+
+            <section class="layout">
+                <!-- LEFT: recording & transcript -->
+                <div class="panel">
+                    <div class="mic-area">
+                        <!-- gradient for mic icon -->
+                        <svg width="0" height="0">
+                            <defs>
+                                <linearGradient id="mic-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#5b6cff" />
+                                    <stop offset="50%" stop-color="#7a5cff" />
+                                    <stop offset="100%" stop-color="#ff5bd5" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+
+                        <button id="micBtn" class="mic-button" type="button">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M12 14a4 4 0 0 0 4-4V7a4 4 0 1 0-8 0v3a4 4 0 0 0 4 4Zm7-4a1 1 0 1 0-2 0 5 5 0 0 1-10 0 1 1 0 1 0-2 0 7 7 0 0 0 6 6.93V20H8a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2h-3v-3.07A7 7 0 0 0 19 10Z" />
+                            </svg>
+                        </button>
+
+                        <div id="status" class="status">
+                            <strong>Ready.</strong> Click the mic to start recording.
+                        </div>
+                    </div>
+
+                    <label for="transcript"><strong>Transcript</strong></label>
+                    <textarea id="transcript" placeholder="Your words will appear here..."></textarea>
+                    <small id="errorMsg" class="error" style="display:none;"></small>
+
+                    <div class="actions">
+                        <button id="clearBtn" class="btn btn-ghost" type="button">Clear</button>
+                        <button id="saveBtn" class="btn btn-primary" type="button">Save Note</button>
+                    </div>
+                </div>
+
+                <!-- RIGHT: saved notes -->
+                <aside class="panel">
+                    <div class="note-list-title">Saved notes</div>
+                    <div id="notes" class="note-list"></div>
+                    <div id="emptyState" class="empty-state">No notes yet. Record something and hit “Save note”.</div>
+                </aside>
+            </section>
+        </main>
+    </div>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
