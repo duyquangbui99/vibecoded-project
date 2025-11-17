@@ -165,6 +165,22 @@ a {
     justify-self: end;
 }
 
+.avatars .dot:nth-child(1) {
+    --i: 0;
+}
+
+.avatars .dot:nth-child(2) {
+    --i: 1;
+}
+
+.avatars .dot:nth-child(3) {
+    --i: 2;
+}
+
+.avatars .dot:nth-child(4) {
+    --i: 3;
+}
+
 /* show links on md+ */
 @media (min-width: 900px) {
     .nav {
